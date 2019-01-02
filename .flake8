@@ -1,0 +1,15 @@
+[flake8]
+exclude =
+    venv/
+    __init__.py
+ignore =
+    F401
+    W503
+    E128
+    E131
+    E203
+    E402
+    F811
+    W291
+max-line-length = 300
+max-doc-length = 100
