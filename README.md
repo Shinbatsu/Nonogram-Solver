@@ -20,3 +20,7 @@ Nonograms require deductive reasoning and pattern recognition to solve and can v
 Here is an example of nonogram crossword:
 
 ![nonogram](assets/nonogram.png)
+
+### About repo
+
+This repository contains a Multisize Nonogram Solver, a tool designed to automatically solve nonogram puzzles using algorithmic techniques.
