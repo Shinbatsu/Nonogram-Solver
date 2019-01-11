@@ -1,4 +1,15 @@
 
+from dp import dp
+
+
+def solve_lines(board, clues, changed_rows, changed_columns, solved_cells, rotate=False):
+    for index in changed_rows:
+        line = ''.join([board[i][index] for i in range(len(board))]) if rotate else ''.join(board[index])
+        delta = solve_line(line, clues[index], changed_columns, board, index, rotate)
+        if delta is None:
+            return None
+        solved_cells += delta
+    return solved_cells
 
 def solve_line(line, groups, changed_columns, board, j, rotate=False):
     length, group_count = len(line), len(groups)
