@@ -1,7 +1,21 @@
+from line_solver import solve_lines
 
-def solve(clues):
-    ...
-    
+def solve(clues: tuple):
+    column_clues, row_clues = clues
+    height, width = len(row_clues), len(column_clues)
+    board = [['?' for _ in range(width)] for _ in range(height)]
+    total_cells = height * width
+
+    solved_cells, iteration = cycle(board, row_clues, column_clues, height, width, total_cells)
+    total_solved = solved_cells
+    total_iterations = iteration
+
+    unsolved = [(r, c) for r in range(height) for c in range(width) if board[r][c] == '?']
+    unsolved.sort(key=lambda x: min(
+        sum(row_clues[x[0]]) - sum(1 for ch in board[x[0]] if ch == 'X'),
+        sum(column_clues[x[1]]) - sum(1 for r in range(height) if board[r][x[1]] == 'X')
+    ))
+
 def cycle(board, row_clues, column_clues, height, width, total_cells):
     prev_count = -1
     iteration = 0
