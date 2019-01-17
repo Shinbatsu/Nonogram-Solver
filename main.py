@@ -16,6 +16,24 @@ def solve(clues: tuple):
         sum(column_clues[x[1]]) - sum(1 for r in range(height) if board[r][x[1]] == 'X')
     ))
 
+    for r, c in unsolved:
+        snapshot = [row.copy() for row in board]
+        board[r][c] = 'X'
+        result = cycle(board, row_clues, column_clues, height, width, total_cells)
+
+        if result is None:
+            board = [row.copy() for row in snapshot]
+            board[r][c] = '.'
+            total_solved += 1
+        else:
+            solved_cells, iteration = result
+            total_iterations += iteration
+            if total_solved + solved_cells + 1 == total_cells:
+                break
+            board = [row.copy() for row in snapshot]
+
+    return tuple(tuple(row) for row in board)
+
 def cycle(board, row_clues, column_clues, height, width, total_cells):
     prev_count = -1
     iteration = 0
