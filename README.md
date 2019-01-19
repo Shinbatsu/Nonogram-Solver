@@ -24,3 +24,23 @@ Here is an example of nonogram crossword:
 ### About repo
 
 This repository contains a Multisize Nonogram Solver, a tool designed to automatically solve nonogram puzzles using algorithmic techniques.
+
+### Usage
+
+```bash
+git clone https://github.com/yourusername/nonogram-solver.git
+cd nonogram-solver
+```
+
+After clonning, you should open main.py file and put your crossword clues according to this signature as argument of solve(clues...):
+
+```python
+clues = (tuple((column_clues,) for column_clues in column),
+         tuple((row_clues,) for row_clues in row))
+```
+
+Then run the file:
+
+```bash
+python main.py
+```
