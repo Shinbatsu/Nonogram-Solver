@@ -11,5 +11,5 @@ ignore =
     E402
     F811
     W291
-max-line-length = 300
-max-doc-length = 100
+max-line-length = 120
+max-doc-length = 80
